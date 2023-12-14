@@ -22,4 +22,8 @@ class PublisherApplicationTests {
 			Thread.sleep(20);
 		}
 	}
+	@Test
+	void sendFanout(){
+		rabbitTemplate.convertAndSend("wjh.fanout",null,"fanout");
+	}
 }
