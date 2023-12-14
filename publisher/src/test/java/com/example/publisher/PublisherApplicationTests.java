@@ -14,4 +14,12 @@ class PublisherApplicationTests {
 		rabbitTemplate.convertAndSend("simple","msg123");
 	}
 
+	@Test
+	void friends2msg() throws InterruptedException {
+		for (int i = 0; i < 50; i++) {
+			String msg = "hi,"+i+" let's play csgo";
+			rabbitTemplate.convertAndSend("friends",msg);
+			Thread.sleep(20);
+		}
+	}
 }

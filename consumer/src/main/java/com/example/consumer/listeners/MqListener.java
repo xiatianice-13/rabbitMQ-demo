@@ -16,4 +16,13 @@ public class MqListener {
 	public void listen(String msg){
 		System.out.println("get message:【"+msg+"】");
 	}
+
+	@RabbitListener(queues = "friends")
+	public void listenfrienda(String msg){
+		System.out.println("a: get message:【"+msg+"】");
+	}
+	@RabbitListener(queues = "friends")
+	public void listenfriendb(String msg){
+		System.err.println("b: get message:【"+msg+"】");
+	}
 }

@@ -5,6 +5,9 @@ spring:
     virtual-host: /wjh
     username: wjh
     password: wjh123
+    listener:
+      simple:
+        prefetch: 1 # 每次只获取一条，处理完成才获取下一条
 
 server:
   port: 8081
