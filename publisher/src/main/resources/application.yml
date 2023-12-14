@@ -1,0 +1,10 @@
+spring:
+  rabbitmq:
+    host: 123.57.36.174
+    port: 5673
+    virtual-host: /wjh
+    username: wjh
+    password: wjh123
+
+server:
+  port: 8080
