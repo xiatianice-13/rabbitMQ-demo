@@ -1,5 +1,9 @@
 package com.example.consumer.listeners;
 
+import org.springframework.amqp.core.ExchangeTypes;
+import org.springframework.amqp.rabbit.annotation.Exchange;
+import org.springframework.amqp.rabbit.annotation.Queue;
+import org.springframework.amqp.rabbit.annotation.QueueBinding;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
@@ -34,11 +38,20 @@ public class MqListener {
 	public void listenfanout2(String msg){
 		System.out.println("fanout2: get message:【"+msg+"】");
 	}
-	@RabbitListener(queues = "direct.queue1")
+	@RabbitListener(bindings = @QueueBinding(
+			value = @Queue(name = "directqueue1",durable = "true"),
+			exchange = @Exchange(name = "wjh.direct1",type = ExchangeTypes.DIRECT),
+			key = {"red","blue"}
+	))
 	public void listendirect1(String msg){
 		System.out.println("direct1: get message:【"+msg+"】");
 	}
-	@RabbitListener(queues = "direct.queue2")
+
+	@RabbitListener(bindings = @QueueBinding(
+			value = @Queue(name = "directqueue2",durable = "true"),
+			exchange = @Exchange(name = "wjh.direct1",type = ExchangeTypes.DIRECT),
+			key = {"red","blue"}
+	))
 	public void listendirect2(String msg){
 		System.out.println("direct2: get message:【"+msg+"】");
 	}
