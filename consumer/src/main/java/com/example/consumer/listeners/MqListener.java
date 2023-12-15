@@ -34,4 +34,22 @@ public class MqListener {
 	public void listenfanout2(String msg){
 		System.out.println("fanout2: get message:【"+msg+"】");
 	}
+	@RabbitListener(queues = "direct.queue1")
+	public void listendirect1(String msg){
+		System.out.println("direct1: get message:【"+msg+"】");
+	}
+	@RabbitListener(queues = "direct.queue2")
+	public void listendirect2(String msg){
+		System.out.println("direct2: get message:【"+msg+"】");
+	}
+
+	@RabbitListener(queues = "topic.queue1")
+	public void listentopic1(String msg){
+		System.out.println("topic1: get message:【"+msg+"】");
+	}
+	@RabbitListener(queues = "topic.queue2")
+	public void listentopic2(String msg){
+		System.out.println("topic2: get message:【"+msg+"】");
+	}
+
 }

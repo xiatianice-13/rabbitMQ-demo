@@ -24,6 +24,19 @@ class PublisherApplicationTests {
 	}
 	@Test
 	void sendFanout(){
-		rabbitTemplate.convertAndSend("wjh.fanout",null,"fanout");
+		rabbitTemplate.convertAndSend("wjh.fanout",null,"fanout-msg");
+	}
+
+	@Test
+	void sendDirect(){
+		rabbitTemplate.convertAndSend("wjh.direct","red","direct-red-msg");
+		rabbitTemplate.convertAndSend("wjh.direct","yellow","direct-yellow-msg");
+		rabbitTemplate.convertAndSend("wjh.direct","blue","direct-blue-msg");
+	}
+
+	@Test
+	void sendTopic(){
+		rabbitTemplate.convertAndSend("wjh.topic","cq.news","cold");
+		rabbitTemplate.convertAndSend("wjh.topic","china.salary","low");
 	}
 }
